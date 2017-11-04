@@ -6,6 +6,7 @@
     <h3>Add a new property for sale:</h3>
     <br>
 
+    
     <form ng-submit="listing.addListing(listing.newListing)">
         <label for="city">Location: </label>
         <input type="text" ng-model="listing.newListing.city" id="city" placeholder="City" />
@@ -25,13 +26,17 @@
                         <th>Location</th>
                         <th>Square Footage</th>
                         <th>Sale Price</th>
+                        <td>Remove Property</td>
                     </tr>
                 </thead>
                 <!--end Table header this might be rental.rental-->
-                <tr ng-repeat="listing in listing.listings track by $index">
-                    <td>{{listing.city}}</td>
-                    <td>{{listing.sqft}}</td>
-                    <td>{{listing.cost}}</td>
+                <tr ng-repeat="house in listing.listings track by $index">
+                    <td>{{house.city}}</td>
+                    <td>{{house.sqft}}</td>
+                    <td>{{house.cost}}</td>
+                    <td>
+                    <button ng-click="listing.delete(house._id)" class="btn btn-danger">
+                        Delete Property</button></td>
                 </tr>
                 <!--end ng repeat-->
             </table>

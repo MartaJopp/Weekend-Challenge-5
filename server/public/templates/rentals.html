@@ -26,13 +26,15 @@
                         <th>Location</th>
                         <th>Square Footage</th>
                         <th>Rent</th>
+                        <th>Remove Property</th>
                     </tr>
                 </thead>
                 <!--end Table header this might be rental.rental-->
-                <tr ng-repeat="rental in rental.rentals track by $index">
-                    <td>{{rental.city}}</td>
-                    <td>{{rental.sqft}}</td>
-                    <td>{{rental.rent}}</td>
+                <tr ng-repeat="house in rental.rentals">
+                    <td>{{house.city}}</td>
+                    <td>{{house.sqft}}</td>
+                    <td>{{house.rent}}</td>
+                    <td><button ng-click="rental.delete(house._id)" class="btn btn-danger">Delete</button></td>
                 </tr>
                 <!--end ng repeat-->
             </table>

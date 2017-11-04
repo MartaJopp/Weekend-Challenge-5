@@ -26,4 +26,14 @@ myApp.controller('RentalsController', function ($http) {
     }
     rc.refreshRentals();
 
+    rc.delete = function (rentalId) {
+        console.log('delete clicked');
+        $http.delete('/rentals/' + rentalId).then(function (response) {
+            console.log('Success!')
+            rc.refreshRentals();
+        }).catch(function (error) {
+            console.log('Failure!');
+        });
+    }
+
 });

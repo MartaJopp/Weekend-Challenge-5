@@ -34,7 +34,7 @@ This application is for a real estate company.  Working with existing listing an
 
 ## Stretch Goals:  Hard Mode:
 
-- [] Ability to delete an existing listing/rental
+- [x] Ability to delete an existing listing/rental
 - [] Use Angular Services
 
 ## Stretch Goals: Pro Mode:

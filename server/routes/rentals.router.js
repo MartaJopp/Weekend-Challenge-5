@@ -36,5 +36,17 @@ router.get('/', function (req, res) {
     }); // END FIND
 }); // END GET Route
 
+router.delete('/:id', function (req, res) {
+    var rentalId = req.params.id;
+    Rental.findByIdAndRemove({ "_id": rentalId }, function (err, data) {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(200);
+        }
+    });
+}); // END DELETE Route
+
 // Make router available to other files
 module.exports = router;

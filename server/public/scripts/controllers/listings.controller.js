@@ -27,4 +27,14 @@ myApp.controller('ListingsController', function ($http) {
     }
     lc.refreshListings();
 
+    lc.delete = function (id) {
+        ('Listing delete clicked');
+        $http.delete('/listings/' + id).then(function (response) {
+            console.log('Success!');
+            lc.refreshListings();
+        }).catch(function (error) {
+            console.log('Failure!');
+        });
+    }
+
 });
