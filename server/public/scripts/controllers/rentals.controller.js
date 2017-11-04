@@ -24,5 +24,6 @@ myApp.controller('RentalsController', function ($http) {
             console.log('You did not GET any riddles');
         })
     }
+    rc.refreshRentals();
 
 });

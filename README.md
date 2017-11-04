@@ -20,17 +20,17 @@ This application is for a real estate company.  Working with existing listing an
         - [x] JavaScript
         - [x] Html
     - [x] Spin up server
-    - [] Get Basic Functionality with:
-        - [] Angular
+    - [x] Get Basic Functionality with:
+        - [x] Angular
     - [x] Connect MongoDB
-        - [] Work with the data set that we have provide for you
-    - [] Basic Bootstrap layout
-    - [] Listing Controller
-    - [] Rental Controller
-    - [] Listing View
-    - [] Rental View
-    - [] Add rental/listing information
-    - [] Use Bootstrap to present the data
+        - [x] Work with the data set that we have provide for you
+    - [x] Basic Bootstrap layout
+    - [x] Listing Controller
+    - [x] Rental Controller
+    - [x] Listing View
+    - [x] Rental View
+    - [x] Add rental/listing information
+    - [x] Use Bootstrap to present the data
 
 ## Stretch Goals:  Hard Mode:
 
