@@ -43,4 +43,9 @@ myApp.controller('ListingsController', function (ListingService) {
         // });
     } // end delete listing function
 
+    //update listing function
+    lc.update = function (listingId, listingToUpdate) {
+        ListingService.update(listingId, listingToUpdate);
+    }
+
 });

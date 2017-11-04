@@ -25,7 +25,7 @@ router.post('/', function (req, res) {
 // GET Route
 router.get('/', function (req, res) {
     // Rental - Is a reference to the collection when finding things in the DB
-    Listing.find({}, function (err, listingsFound) { //finding all rentals in collection
+    Listing.find({}).sort({ cost: 1 }).exec(function (err, listingsFound) { //finding all rentals in collection
         if (err) {
             console.log("ERROR!", err);
             res.sendStatus(500);

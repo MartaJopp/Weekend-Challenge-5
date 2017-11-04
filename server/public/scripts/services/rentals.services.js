@@ -2,6 +2,7 @@ myApp.service('RentalService', function ($http) {
     var self = this;
 
     self.rentals = { data: [] };
+    
     // addRental function
     self.addRental = function (newRental) {
         console.log('Rental property added');
@@ -47,6 +48,25 @@ myApp.service('RentalService', function ($http) {
                 })
             } // end rental delete
     )};
-})
-        
-        
+// send put request with the id and then the new values which can be put in the
+// form - and saved?  I believe I would call the function with the id, and also the entire row.
+    self.update = function (rentalId, rentalToUpdate) {
+        console.log('Update Clicked');
+        // swal({
+        //     title: 'Multiple inputs',
+        //     html:
+        //     '<label for="city">Location: </label>',
+        //     '<input type="text" ng-model="rental.newRental.city" id="city" placeholder="City" />'
+        //     focusConfirm: false,
+        //     preConfirm: function () {
+        //         return new Promise(function (resolve) {
+        //             resolve(
+                        
+        //                 )
+        //         })
+        //     }
+        // }).then(function (result) {
+        //     swal(JSON.stringify(result))
+        // }).catch(swal.noop)
+            }
+        });

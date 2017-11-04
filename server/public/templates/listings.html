@@ -1,12 +1,12 @@
 <div>
     <br>
     <br>
-    <h1 class = "centerThis">Listings for Sale</h1>
+    <h1 class="centerThis">Listings for Sale</h1>
     <br>
     <h3>Add a new property for sale:</h3>
     <br>
 
-    
+
     <form ng-submit="listing.addListing(listing.newListing)">
         <label for="city">Location: </label>
         <input type="text" ng-model="listing.newListing.city" id="city" placeholder="City" />
@@ -16,17 +16,18 @@
         <input type="number" ng-model="listing.newListing.cost" id="cost" placeholder="Sale Price" />
         <button class="btn btn-primary">Add Property For Sale</button>
     </form>
-<br>
-<br>
+    <br>
+    <br>
     <div class="container">
         <div class="row">
             <table class="table table-hover table-fixed">
                 <thead>
-                    <tr class = "fixed-top">
+                    <tr class="fixed-top">
                         <th>Location</th>
                         <th>Square Footage</th>
                         <th>Sale Price</th>
                         <td>Remove Property</td>
+                        <td>Update Property</td>
                     </tr>
                 </thead>
                 <!--end Table header this might be rental.rental-->
@@ -35,8 +36,12 @@
                     <td>{{house.sqft}}</td>
                     <td>{{house.cost}}</td>
                     <td>
-                    <button ng-click="listing.delete(house._id)" class="btn btn-danger">
-                        Delete Property</button></td>
+                        <button ng-click="listing.delete(house._id)" class="btn btn-danger">
+                            Delete Property</button>
+                    </td>
+                    <td>
+                        <button ng-click="listing.update(house._id, house)" class="btn btn-success">Update</button>
+                    </td>
                 </tr>
                 <!--end ng repeat-->
             </table>

@@ -42,4 +42,9 @@ myApp.controller('RentalsController', function (RentalService) {
         // })
     } // end rental delete
 
+    // rental update function
+    rc.update = function (rentalId, rentalToUpdate) {
+        RentalService.update((rentalId, rentalToUpdate))
+    }
+
 });

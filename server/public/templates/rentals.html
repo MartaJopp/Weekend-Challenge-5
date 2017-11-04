@@ -1,7 +1,7 @@
 <div>
     <br>
     <br>
-    <h1 class = "centerThis">Properties for Rent</h1>
+    <h1 class="centerThis">Properties for Rent</h1>
     <br>
     <h3>Add a new property for rent:</h3>
     <br>
@@ -27,6 +27,7 @@
                         <th>Square Footage</th>
                         <th>Rent</th>
                         <th>Remove Property</th>
+                        <th>Update Property</th>
                     </tr>
                 </thead>
                 <!--end Table header this might be rental.rental-->
@@ -34,7 +35,12 @@
                     <td>{{house.city}}</td>
                     <td>{{house.sqft}}</td>
                     <td>{{house.rent}}</td>
-                    <td><button ng-click="rental.delete(house._id)" class="btn btn-danger">Delete</button></td>
+                    <td>
+                        <button ng-click="rental.delete(house._id)" class="btn btn-danger">Delete</button>
+                    </td>
+                    <td>
+                        <button ng-click="rental.update(house._id, house)" class="btn btn-success">Update</button>
+                    </td>
                 </tr>
                 <!--end ng repeat-->
             </table>

@@ -49,4 +49,24 @@ self.delete = function (listingId) {
     } // end listing delete
         )
 };
-});
+
+self.update = function (listingId, listingToUpdate) {
+    console.log('Update Clicked');
+    // swal({
+    //     title: 'Multiple inputs',
+    //     html:
+    //     '<label for="city">Location: </label>',
+    //     '<input type="text" ng-model="rental.newRental.city" id="city" placeholder="City" />'
+    //     focusConfirm: false,
+    //     preConfirm: function () {
+    //         return new Promise(function (resolve) {
+    //             resolve(
+
+    //                 )
+    //         })
+    //     }
+    // }).then(function (result) {
+    //     swal(JSON.stringify(result))
+    // }).catch(swal.noop)
+}
+}); // end update function
