@@ -1,1 +1,44 @@
 # Weekend-Challenge-5
+
+This application is for a real estate company.  Working with existing listing and rental data - users may find homes for sale or rent.  
+
+## Technologies 
+
+- [x] Angular
+- [x] Express
+- [x] MongoDB
+- [x] Node
+- [x] JavaScript
+- [x] Bootstrap
+
+## To Do:
+
+- [] Create a Full Stack application from the ground up using Angular, Node,      Express, and MongoDB
+    - [X] Setup folders and files
+    - [] .gitignore
+    - [] Get basic functionality working with:
+        - [] JavaScript
+        - [] Html
+    - [] Spin up server
+    - [] Get Basic Functionality with:
+        - [] Angular
+    - [] Connect MongoDB
+        - [] Work with the data set that we have provide for you
+    - [] Basic Bootstrap layout
+    - [] Listing Controller
+    - [] Rental Controller
+    - [] Listing View
+    - [] Rental View
+    - [] Add rental/listing information
+    - [] Use Bootstrap to present the data
+
+## Stretch Goals:  Hard Mode:
+
+- [] Ability to delete an existing listing/rental
+- [] Use Angular Services
+
+## Stretch Goals: Pro Mode:
+
+- [] Ability to update an existing record using a pop up (modal).
+- [] Display the least expensive property featured at the top of the page.
+- [] Ability to search or filter by various parameters (try doing this in         Mongo instead of Angular)

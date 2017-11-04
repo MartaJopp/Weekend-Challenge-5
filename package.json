@@ -1,0 +1,29 @@
+{
+  "name": "Weekend-Challenge-5",
+  "version": "1.0.0",
+  "description": "This application is for a real estate company.  Working with existing listing and rental data - users may find homes for sale or rent.",
+  "main": "index.js",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "angular-route": "^1.6.6",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
+    "express": "^4.16.2",
+    "mongoose": "^4.13.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MartaJopp/Weekend-Challenge-5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MartaJopp/Weekend-Challenge-5/issues"
+  },
+  "homepage": "https://github.com/MartaJopp/Weekend-Challenge-5#readme"
+}
