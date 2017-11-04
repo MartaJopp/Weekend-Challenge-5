@@ -15,14 +15,14 @@ This application is for a real estate company.  Working with existing listing an
 
 - [] Create a Full Stack application from the ground up using Angular, Node,      Express, and MongoDB
     - [X] Setup folders and files
-    - [] .gitignore
+    - [x] .gitignore
     - [] Get basic functionality working with:
         - [] JavaScript
         - [] Html
-    - [] Spin up server
+    - [x] Spin up server
     - [] Get Basic Functionality with:
         - [] Angular
-    - [] Connect MongoDB
+    - [x] Connect MongoDB
         - [] Work with the data set that we have provide for you
     - [] Basic Bootstrap layout
     - [] Listing Controller
