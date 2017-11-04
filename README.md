@@ -13,7 +13,7 @@ This application is for a real estate company.  Working with existing listing an
 
 ## To Do:
 
-- [] Create a Full Stack application from the ground up using Angular, Node,      Express, and MongoDB
+- [x] Create a Full Stack application from the ground up using Angular, Node,      Express, and MongoDB
     - [X] Setup folders and files
     - [x] .gitignore
     - [x] Get basic functionality working with:
@@ -32,12 +32,12 @@ This application is for a real estate company.  Working with existing listing an
     - [x] Add rental/listing information
     - [x] Use Bootstrap to present the data
 
-## Stretch Goals:  Hard Mode:
+## Stretch Goals-Hard Mode:
 
 - [x] Ability to delete an existing listing/rental
 - [] Use Angular Services
 
-## Stretch Goals: Pro Mode:
+## Stretch Goals-Pro Mode:
 
 - [] Ability to update an existing record using a pop up (modal).
 - [] Display the least expensive property featured at the top of the page.

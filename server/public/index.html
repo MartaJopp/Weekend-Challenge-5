@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/angular-route.min.js"></script>
+    <script src="vendors/sweetalert2.all.min.js"></script>
     <script src="scripts/client.js"></script>
     <script src="scripts/controllers/listings.controller.js"></script>
     <script src="scripts/controllers/rentals.controller.js"></script>
@@ -18,6 +19,7 @@
 </head>
 
 <body ng-app="myApp">
+     <script>swal({ title: 'Error!', text: 'Do you want to continue', type: 'error', confirmButtonText: 'Cool' })</script>
     <div class="container">
         <div class="row">
             <nav class="navbar navbar-fixed-top">
