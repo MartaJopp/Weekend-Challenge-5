@@ -30,7 +30,7 @@
                     </tr>
                 </thead>
                 <!--end Table header this might be rental.rental-->
-                <tr ng-repeat="house in rental.rentals">
+                <tr ng-repeat="house in rental.rentals.data track by $index">
                     <td>{{house.city}}</td>
                     <td>{{house.sqft}}</td>
                     <td>{{house.rent}}</td>
