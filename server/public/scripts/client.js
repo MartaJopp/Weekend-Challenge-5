@@ -6,6 +6,6 @@ myApp.config(function ($routeProvider) {
         controller: 'ListingsController as listing'
     }).when('/rentals', {
         templateUrl: 'templates/rentals.html',
-        controller: 'RentalsController as rentals'
+        controller: 'RentalsController as rental'
     })
 })
