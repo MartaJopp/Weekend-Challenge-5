@@ -1,5 +1,3 @@
-console.log('client.js sourced');
-
 var myApp = angular.module('myApp', ['ngRoute']);
 
 myApp.config(function ($routeProvider) {
@@ -8,6 +6,6 @@ myApp.config(function ($routeProvider) {
         controller: 'ListingsController as listing'
     }).when('/rentals', {
         templateUrl: 'templates/rentals.html',
-        controller: 'RentalsController as rental'
+        controller: 'RentalsController as rentals'
     })
 })

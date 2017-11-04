@@ -9,19 +9,20 @@
     <script src="scripts/client.js"></script>
     <script src="scripts/controllers/listings.controller.js"></script>
     <script src="scripts/controllers/rentals.controller.js"></script>
-    <link rel="bootstrap" href="styles/bootstrap.css">
+    <link rel="stylesheet" href="styles/bootstrap.css">
     <link rel="glyphicons" href="glyphicons-halflings-regular.1.woff">
     <link rel="stylesheet" href="styles/style.css">
     <title>Real Estate Application</title>
 </head>
-<body ng-app "myApp">
+<body ng-app="myApp">
     <div class = "container-fluid">
         <div class = "jumbotron">
             <h1>Real Estate Application</h1>
+            Is Angular Working???  {{4===4}}
         </div> <!--End Jumbotron-->
         <div class = "row">
-            <a href="/#!/Listings"><strong>Listings</strong></a>
-            <a href="/#!/Listings"><strong>Rentals</strong></a>
+            <a href="/#!/listings">Listings</a>
+            <a href="/#!/rentals">Rentals</a>
         </div> <!--End Row-->
             <main ng-view></main>
                 <!--TEMPLATE VIEwS WILL APPEAR HERE-->

@@ -1,4 +1,5 @@
-myApp.controller('RentalsController', ['$http', function ($http) {
+
+myApp.controller('RentalsController', function ($http) {
     console.log('RentalsController created.');
 
-}]);
+});
