@@ -35,10 +35,16 @@ This application is for a real estate company.  Working with existing listing an
 ## Stretch Goals-Hard Mode:
 
 - [x] Ability to delete an existing listing/rental
-- [] Use Angular Services
+- [x] Use Angular Services
 
 ## Stretch Goals-Pro Mode:
 
 - [] Ability to update an existing record using a pop up (modal).
 - [] Display the least expensive property featured at the top of the page.
 - [] Ability to search or filter by various parameters (try doing this in         Mongo instead of Angular)
+
+## Individual Stretch Goals: 
+
+- [] Utilize Derek's logo
+- [] Sweet alerts upon delete
+- [] Add design to a home page

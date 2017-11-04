@@ -1,7 +1,7 @@
 myApp.service('RentalService', function ($http) {
     var self = this;
 
-self.rentals = {data: []};
+    self.rentals = { data: [] };
     // addRental function
     self.addRental = function (newRental) {
         console.log('Rental property added');
@@ -14,7 +14,7 @@ self.rentals = {data: []};
     } //end addRental function
 
     //refreshRentals function
-self.refreshRentals = function () {
+    self.refreshRentals = function () {
         $http.get('/rentals').then(function (response) {
             console.log('Here are the rentals', response);
             self.rentals.data = response.data;
@@ -23,15 +23,30 @@ self.refreshRentals = function () {
         })
     } // end refreshRentals
 
-// delete rental function
-self.delete = function (rentalId) {
-    console.log('delete clicked');
-    $http.delete('/rentals/' + rentalId).then(function (response) {
-        console.log('Success!')
-        self.refreshRentals();
-    }).catch(function (error) {
-        console.log('Failure!');
-    })
-} // end rental delete
-
+    // delete rental function
+    self.delete = function (rentalId) {
+        swal({
+            title: 'Delete rental property?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function () {
+                $http.delete('/rentals/' + rentalId).then(function (response) {
+                    console.log('Success!')
+                    swal({
+                        "title": "Deleted!",
+                        "text": "The rental property has been deleted!",
+                        "type": "success"
+                    });
+                    self.refreshRentals();
+                }).catch(function (error) {
+                    console.log('Failure!');
+                })
+            } // end rental delete
+    )};
 })
+        
+        
