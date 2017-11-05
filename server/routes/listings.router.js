@@ -78,7 +78,7 @@ router.get('/searchSqft/:keyword', function (req, res) {
 //search by Price Get Route
 router.get('/searchPrice/:keyword', function (req, res) {
     var keyword = parseInt(req.params.keyword);
-    console.log('Should be Rent', req.params.keyword);
+    console.log('Should be Sale Price', req.params.keyword);
     Listing.find({ cost: keyword }, function (err, listingsFound) {
         if (err) {
             console.log("Error!", err);
