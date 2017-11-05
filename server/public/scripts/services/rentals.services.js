@@ -69,4 +69,32 @@ myApp.service('RentalService', function ($http) {
         //     swal(JSON.stringify(result))
         // }).catch(swal.noop)
             }
-        });
+
+    self.citySearch = function (value, keyword) {
+        console.log(value, keyword);
+        if (value === 'city') {
+            $http.get('/rentals/searchCity/' + keyword).then(function (response) {
+                console.log(response);
+                self.rentals.data = response.data;
+            }).catch(function (error) {
+                console.log('Failure!');
+            })
+        } // end if city
+        if (value === 'sqft') {
+            $http.get('/rentals/searchSqft/' + keyword).then(function (response) {
+                console.log(response);
+                self.rentals.data = response.data;
+            }).catch(function (error) {
+                console.log('Failure!');
+            })
+        } // end if sqft
+        if (value === 'rent') {
+            $http.get('/rentals/searchRent/' + keyword).then(function (response) {
+                console.log(response);
+                self.rentals.data = response.data;
+            }).catch(function (error) {
+                console.log('Failure!');
+            })
+        } // end if rent    
+    } // end citySearch function
+});

@@ -47,5 +47,47 @@ router.delete('/:id', function (req, res) {
     });
 }); // END DELETE Route
 
+// Search get route
+// Search by City get route
+router.get('/searchCity/:keyword', function (req, res) {
+    var keyword = req.params.keyword;
+    Listing.find({ city: keyword }, function (err, listingsFound) {
+        if (err) {
+            console.log("Error!", err);
+            res.sendStatus(500);
+        } else {
+            res.send(listingsFound);
+        }
+    });
+})//end search by City GET route
+
+//search by Square Footage Get Route
+router.get('/searchSqft/:keyword', function (req, res) {
+    var keyword = parseInt(req.params.keyword);
+    console.log('Should be Square Feet', req.params.keyword);
+    Listing.find({ sqft: keyword }, function (err, listingsFound) {
+        if (err) {
+            console.log("Error!", err);
+            res.sendStatus(500);
+        } else {
+            res.send(listingsFound);
+        }
+    });
+})//end search by Square Footage GET route
+
+//search by Price Get Route
+router.get('/searchPrice/:keyword', function (req, res) {
+    var keyword = parseInt(req.params.keyword);
+    console.log('Should be Rent', req.params.keyword);
+    Listing.find({ cost: keyword }, function (err, listingsFound) {
+        if (err) {
+            console.log("Error!", err);
+            res.sendStatus(500);
+        } else {
+            res.send(listingsFound);
+        }
+    });
+})//end search by Price GET route
+
 // Make router available to other files
 module.exports = router;

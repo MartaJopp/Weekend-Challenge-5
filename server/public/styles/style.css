@@ -1,17 +1,20 @@
-
-tbody {
+body {
+    background-color: RGB(249,249,249)
+}
+/* tbody {
     display:block;
     height:200px;
     overflow:auto;
-}
-thead, tbody tr {
+} */
+/* thead, tbody tr {
     display:table;
     width:100%;
     table-layout:fixed;
-}
-thead {
-    width: calc( 100% - 1em )
-}
+} */
+/* thead {
+    width: calc( 100% - 1em );
+    style: bold;
+} */
 
 .centerThis {
     text-align: center;
@@ -19,4 +22,41 @@ thead {
 
 #city, #sqft, #cost, #rent {
     margin-right: 10px;
+}
+
+.nav {
+    background-color: white;
+    height: 100PX;
+}
+
+.active a {
+    height: 60PX;
+    margin-left: 50PX;
+    margin-top: 20PX;
+}
+
+.views {
+    background-color: white;
+}
+
+.listings {
+    margin-top: 10PX;
+}
+
+.rentals {
+    margin-top: 10px
+}
+
+body {
+    background-color: RGB(229, 229, 229)
+}
+
+img {
+    margin-left: 20PX;
+    margin-top: 20PX;
+}
+
+.jumbotron {
+    background-color: white;
+    float: left;
 }

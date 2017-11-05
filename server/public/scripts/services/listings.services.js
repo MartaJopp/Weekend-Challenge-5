@@ -39,7 +39,7 @@ self.delete = function (listingId) {
             console.log('Success!')
             swal({
                 "title": "Deleted!",
-                "text": "The rental property has been deleted!",
+                "text": "The listing has been deleted!",
                 "type": "success"
             });
             self.refreshListings();
@@ -52,21 +52,50 @@ self.delete = function (listingId) {
 
 self.update = function (listingId, listingToUpdate) {
     console.log('Update Clicked');
-    // swal({
-    //     title: 'Multiple inputs',
-    //     html:
-    //     '<label for="city">Location: </label>',
-    //     '<input type="text" ng-model="rental.newRental.city" id="city" placeholder="City" />'
-    //     focusConfirm: false,
-    //     preConfirm: function () {
-    //         return new Promise(function (resolve) {
-    //             resolve(
+    swal({
+        title: 'Multiple inputs',
+        html:
+        '<input id="swal-input1" class="swal2-input">' +
+        '<input id="swal-input2" class="swal2-input">',
+        focusConfirm: false,
+        preConfirm: function () {
+            return new Promise(function (resolve) {
+                resolve([
+                    ('#swal-input1').html(),
+                    ('#swal-input2').html()
+                ])
+            })
+        }
+    }).then(function (result) {
+        swal(JSON.stringify(result))
+    }).catch(swal.noop)
+} // end update function
 
-    //                 )
-    //         })
-    //     }
-    // }).then(function (result) {
-    //     swal(JSON.stringify(result))
-    // }).catch(swal.noop)
-}
-}); // end update function
+self.citySearch = function (value, keyword) {
+    console.log(value, keyword);
+    if (value === 'city') {
+        $http.get('/listings/searchCity/' + keyword).then(function (response) {
+            console.log(response);
+            self.listings.data = response.data;
+        }).catch(function (error) {
+            console.log('Failure!');
+        })
+    } // end if city
+    if (value === 'sqft') {
+        $http.get('/listings/searchSqft/' + keyword).then(function (response) {
+            console.log(response);
+            self.listings.data = response.data;
+        }).catch(function (error) {
+            console.log('Failure!');
+        })
+    } // end if sqft
+    if (value === 'cost') {
+        $http.get('/listings/searchPrice/' + keyword).then(function (response) {
+            console.log(response);
+            self.listings.data = response.data;
+        }).catch(function (error) {
+            console.log('Failure!');
+        })
+    } // end if cost    
+} // end citySearch function
+}); 

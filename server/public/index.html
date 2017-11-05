@@ -23,30 +23,41 @@
 <body ng-app="myApp">
     <div class="container">
         <div class="row">
-            <nav class="navbar navbar-fixed-top">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <a class="navbar-brand"><i class="fa fa-home" aria-hidden="true"></i>    Real Estate MEAN Stack App</a>
+            <div class="col-md-12">
+                <div class="page-header"></div>
+                <nav class="nav navbar-fixed-top">
+                    <div class="nav navbar-header">
+                            <img src="photos/Derektransparent.png" height=50px, width=auto alt="Derek Jopp Edina Realty Realtor">
                     </div>
                     <ul class="nav navbar-nav">
-                        <li>
+                        <li class="active">
                             <a href="/#!/listings">Listings</a>
                         </li>
-                        <li>
+                        <li class ="active">
                             <a href="/#!/rentals">Rentals</a>
                         </li>
                     </ul>
-                </div>
-            </nav> <!--End Nav Bar-->
+                    <!--End unordered menu list-->
+
+                </nav>
+            </div>
+                <!--end Nav bar-->
+            </div>
+            <!-- End col-md-12-->
         </div>
         <!--End Row-->
+        <div class = "container" "views">
+        <div class="row"></div>
+        <!--Start row for views-->
         <main ng-view>
-
+            <!--TEMPLATE VIEwS WILL APPEAR HERE-->
         </main>
-        <!--TEMPLATE VIEwS WILL APPEAR HERE-->
+        <!--End main ngview-->
     </div>
-    <!--End container-fluid div-->
-
+    <!--end row div here-->
+    </div>
+    </div>
+    <!-- End container div here-->
 </body>
 
 </html>

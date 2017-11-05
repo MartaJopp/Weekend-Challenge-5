@@ -1,33 +1,56 @@
-<div>
+<div class="listings container">
     <br>
     <br>
+    <br>
+
     <h1 class="centerThis">Listings for Sale</h1>
     <br>
-    <h3>Add a new property for sale:</h3>
-    <br>
+
+    <div class="jumbotron view">
+        <h3>Add a new property for sale:</h3>
+        <br>
 
 
-    <form ng-submit="listing.addListing(listing.newListing)">
-        <label for="city">Location: </label>
-        <input type="text" ng-model="listing.newListing.city" id="city" placeholder="City" />
-        <label for="sqft">Square Footage: </label>
-        <input type="number" ng-model="listing.newListing.sqft" id="sqft" placeholder="Square Footage" />
-        <label for="sale">Sale Price: </label>
-        <input type="number" ng-model="listing.newListing.cost" id="cost" placeholder="Sale Price" />
-        <button class="btn btn-primary">Add Property For Sale</button>
-    </form>
+        <form ng-submit="listing.addListing(listing.newListing)">
+            <label for="city">Location: </label>
+            <input type="text" ng-model="listing.newListing.city" id="city" placeholder="City" />
+            <label for="sqft">Square Footage: </label>
+            <input type="number" ng-model="listing.newListing.sqft" id="sqft" placeholder="Square Footage" />
+            <label for="sale">Sale Price: </label>
+            <input type="number" ng-model="listing.newListing.cost" id="cost" placeholder="Sale Price" />
+            <button class="btn btn-primary">Add Property For Sale</button>
+        </form>
+    </div> <!--End jumbotron form div-->
+    <div class="row">
+        <div class="col-md-12">
+            <form ng-submit="listing.citySearch(listing.citySearch.value, listing.citySearch.searchKeyword)">
+                <label for="value">Search By:</label>
+                <select ng-model="listing.citySearch.value" id="value">
+                    <option value="city">City</option>
+                    <option value="sqft">Square Footage</option>
+                    <option value="cost">Price</option>
+                </select>
+                <label for="search">Input Search</label>
+                <input type="text" ng-model="listing.citySearch.searchKeyword" id="search" />
+                <button class=".btn-primary">Search for Listings</button>
+            </form>
+            <!--End Search Form-->
+        </div>
+        <!-- End col-md-12 div-->
+    </div>
+    <!-- End Search "row" div -->
     <br>
     <br>
     <div class="container">
         <div class="row">
-            <table class="table table-hover table-fixed">
+            <table class="table table-hover">
                 <thead>
-                    <tr class="fixed-top">
+                    <tr>
                         <th>Location</th>
                         <th>Square Footage</th>
-                        <th>Sale Price</th>
-                        <td>Remove Property</td>
-                        <td>Update Property</td>
+                        <th>Price</th>
+                        <th>Remove Property</th>
+                        <th>Update Property</th>
                     </tr>
                 </thead>
                 <!--end Table header this might be rental.rental-->
@@ -37,7 +60,7 @@
                     <td>{{house.cost}}</td>
                     <td>
                         <button ng-click="listing.delete(house._id)" class="btn btn-danger">
-                            Delete Property</button>
+                            Delete</button>
                     </td>
                     <td>
                         <button ng-click="listing.update(house._id, house)" class="btn btn-success">Update</button>

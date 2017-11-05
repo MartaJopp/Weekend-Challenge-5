@@ -47,5 +47,9 @@ myApp.controller('ListingsController', function (ListingService) {
     lc.update = function (listingId, listingToUpdate) {
         ListingService.update(listingId, listingToUpdate);
     }
+//Search
+    lc.citySearch = function (value, keyword) {
+        ListingService.citySearch(value, keyword);
+    }//end search by location
 
 });

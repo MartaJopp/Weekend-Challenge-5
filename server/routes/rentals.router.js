@@ -45,8 +45,48 @@ router.delete('/:id', function (req, res) {
         } else {
             res.sendStatus(200);
         }
+    }); 
+});// END DELETE ROUTE
+    // Search by City get route
+router.get('/searchCity/:keyword', function (req, res) {
+        var keyword = req.params.keyword;
+        Rental.find({ city: keyword }, function (err, rentalsFound) {
+            if (err) {
+                console.log("Error!", err);
+                res.sendStatus(500);
+            } else {
+                res.send(rentalsFound);
+            }
+        }); 
+})//end search by City GET route
+
+//search by Square Footage Get Route
+router.get('/searchSqft/:keyword', function (req, res) {
+    var keyword = parseInt(req.params.keyword);
+    console.log('Should be Square Feet', req.params.keyword);
+    Rental.find({ sqft: keyword }, function (err, rentalsFound) {
+        if (err) {
+            console.log("Error!", err);
+            res.sendStatus(500);
+        } else {
+            res.send(rentalsFound);
+        }
     });
-}); // END DELETE Route
+})//end search by Square Footage GET route
+
+//search by Rent Footage Get Route
+router.get('/searchRent/:keyword', function (req, res) {
+    var keyword = parseInt(req.params.keyword);
+    console.log('Should be Rent', req.params.keyword);
+    Rental.find({ rent: keyword }, function (err, rentalsFound) {
+        if (err) {
+            console.log("Error!", err);
+            res.sendStatus(500);
+        } else {
+            res.send(rentalsFound);
+        }
+    });
+})//end search by Rent Footage GET route
 
 // Make router available to other files
 module.exports = router;

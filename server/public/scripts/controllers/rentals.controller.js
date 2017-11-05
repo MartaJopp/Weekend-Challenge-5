@@ -47,4 +47,9 @@ myApp.controller('RentalsController', function (RentalService) {
         RentalService.update((rentalId, rentalToUpdate))
     }
 
+    //search by location
+    rc.citySearch = function (value, keyword) {
+        RentalService.citySearch(value, keyword);
+    }//end search by location
+
 });
