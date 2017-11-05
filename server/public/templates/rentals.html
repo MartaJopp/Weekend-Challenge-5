@@ -25,10 +25,10 @@
             <label for="value">Search By:</label>
             <select ng-model = "rental.citySearch.value" id="value">
                 <option value = "city">City</option>
-                <option value = "sqft">Square Footage</option>
-                <option value = "rent">Rent</option>
+                <option value = "sqft">Square Footage Greater Than or Equal To:</option>
+                <option value = "rent">Rent Less Than or Equal To:</option>
             </select>
-            <label for="search">Input Search</label>
+            <label for="search"></label>
             <input type="text" ng-model="rental.citySearch.searchKeyword" id="search" />
             <button class=".btn-primary">Search for Rentals</button>
         </form> <!--End Search Form-->

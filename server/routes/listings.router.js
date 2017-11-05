@@ -51,7 +51,7 @@ router.delete('/:id', function (req, res) {
 // Search by City get route
 router.get('/searchCity/:keyword', function (req, res) {
     var keyword = req.params.keyword;
-    Listing.find({ city: keyword }, function (err, listingsFound) {
+    Listing.find({ "city": { "$regex": keyword, "$options": "i" } }, function (err, listingsFound) {
         if (err) {
             console.log("Error!", err);
             res.sendStatus(500);
@@ -65,7 +65,7 @@ router.get('/searchCity/:keyword', function (req, res) {
 router.get('/searchSqft/:keyword', function (req, res) {
     var keyword = parseInt(req.params.keyword);
     console.log('Should be Square Feet', req.params.keyword);
-    Listing.find({ sqft: keyword }, function (err, listingsFound) {
+    Listing.find({ sqft: {$gte: keyword} }, function (err, listingsFound) {
         if (err) {
             console.log("Error!", err);
             res.sendStatus(500);
@@ -79,7 +79,7 @@ router.get('/searchSqft/:keyword', function (req, res) {
 router.get('/searchPrice/:keyword', function (req, res) {
     var keyword = parseInt(req.params.keyword);
     console.log('Should be Sale Price', req.params.keyword);
-    Listing.find({ cost: keyword }, function (err, listingsFound) {
+    Listing.find({ cost: {$lte: keyword} }, function (err, listingsFound) {
         if (err) {
             console.log("Error!", err);
             res.sendStatus(500);
