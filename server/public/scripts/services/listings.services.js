@@ -50,25 +50,28 @@ self.delete = function (listingId) {
         )
 };
 
-self.update = function (listingId, listingToUpdate) {
-    console.log('Update Clicked');
+self.update = function (listingId) {
     swal({
-        title: 'Multiple inputs',
-        html:
-        '<input id="swal-input1" class="swal2-input">' +
-        '<input id="swal-input2" class="swal2-input">',
-        focusConfirm: false,
-        preConfirm: function () {
-            return new Promise(function (resolve) {
-                resolve([
-                    ('#swal-input1').html(),
-                    ('#swal-input2').html()
-                ])
+        title: 'What is your name?',
+        input: 'text',
+        inputPlaceholder: 'Enter your name or nickname',
+        showCancelButton: true,
+        inputValidator: function (value) {
+            return new Promise(function (resolve, reject) {
+                if (value) {
+                    resolve()
+                } else {
+                    reject('You need to write something!')
+                }
             })
         }
-    }).then(function (result) {
-        swal(JSON.stringify(result))
-    }).catch(swal.noop)
+    }).then(function (name) {
+        swal({
+            type: 'success',
+            title: 'Hi, ' + name
+        })
+    })
+
 } // end update function
 
 self.citySearch = function (value, keyword) {
