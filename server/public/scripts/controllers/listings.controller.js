@@ -4,8 +4,8 @@ myApp.controller('ListingsController', function (ListingService) {
 
     var lc = this;
     lc.listings = ListingService.listings;
-    
-// add Listing function
+
+    // add Listing function
     lc.addListing = function (newListing) {
         ListingService.addListing(newListing);
         // console.log('Rental property added');
@@ -47,7 +47,7 @@ myApp.controller('ListingsController', function (ListingService) {
     lc.update = function (listingId, listingToUpdate) {
         ListingService.update(listingId, listingToUpdate);
     }
-//Search
+    //Search
     lc.citySearch = function (value, keyword) {
         ListingService.citySearch(value, keyword);
     }//end search by location

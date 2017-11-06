@@ -1,5 +1,5 @@
 var express = require('express'); // use express
-var app = express(); 
+var app = express();
 var port = 5000; // listen on port 5000
 var bodyParser = require('body-parser'); // require body-parser
 var listings = require('./routes/listings.router.js'); // accesses router

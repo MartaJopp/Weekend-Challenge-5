@@ -2,7 +2,7 @@ myApp.service('RentalService', function ($http) {
     var self = this;
 
     self.rentals = { data: [] };
-    
+
     // addRental function
     self.addRental = function (newRental) {
         console.log('Rental property added');
@@ -35,21 +35,22 @@ myApp.service('RentalService', function ($http) {
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then(function () {
-                $http.delete('/rentals/' + rentalId).then(function (response) {
-                    console.log('Success!')
-                    swal({
-                        "title": "Deleted!",
-                        "text": "The rental property has been deleted!",
-                        "type": "success"
-                    });
-                    self.refreshRentals();
-                }).catch(function (error) {
-                    console.log('Failure!');
-                })
-            } // end rental delete
-    )};
-// send put request with the id and then the new values which can be put in the
-// form - and saved?  I believe I would call the function with the id, and also the entire row.
+            $http.delete('/rentals/' + rentalId).then(function (response) {
+                console.log('Success!')
+                swal({
+                    "title": "Deleted!",
+                    "text": "The rental property has been deleted!",
+                    "type": "success"
+                });
+                self.refreshRentals();
+            }).catch(function (error) {
+                console.log('Failure!');
+            })
+        } // end rental delete
+            )
+    };
+    // send put request with the id and then the new values which can be put in the
+    // form - and saved?  I believe I would call the function with the id, and also the entire row.
     self.update = function (rentalId, rentalToUpdate) {
         console.log('Update Clicked');
         // swal({
@@ -61,14 +62,14 @@ myApp.service('RentalService', function ($http) {
         //     preConfirm: function () {
         //         return new Promise(function (resolve) {
         //             resolve(
-                        
+
         //                 )
         //         })
         //     }
         // }).then(function (result) {
         //     swal(JSON.stringify(result))
         // }).catch(swal.noop)
-            }
+    }
 
     self.citySearch = function (value, keyword) {
         console.log(value, keyword);

@@ -45,19 +45,19 @@ router.delete('/:id', function (req, res) {
         } else {
             res.sendStatus(200);
         }
-    }); 
+    });
 });// END DELETE ROUTE
-    // Search by City get route
+// Search by City get route
 router.get('/searchCity/:keyword', function (req, res) {
-        var keyword = req.params.keyword;
-        Rental.find({ "city": { "$regex": keyword, "$options": "i" } }, function (err, rentalsFound) {
-            if (err) {
-                console.log("Error!", err);
-                res.sendStatus(500);
-            } else {
-                res.send(rentalsFound);
-            }
-        }); 
+    var keyword = req.params.keyword;
+    Rental.find({ "city": { "$regex": keyword, "$options": "i" } }, function (err, rentalsFound) {
+        if (err) {
+            console.log("Error!", err);
+            res.sendStatus(500);
+        } else {
+            res.send(rentalsFound);
+        }
+    });
 })//end search by City GET route
 
 //search by Square Footage Get Route

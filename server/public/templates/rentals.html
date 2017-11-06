@@ -1,39 +1,43 @@
-<div class = "rentals container">
+<div class="rentals container">
     <br>
     <br>
     <br>
-    
+
     <h1 class="centerThis">Properties for Rent</h1>
     <br>
     <div class="jumbotron view">
-    <h3>Add a new property for rent:</h3>
-    <br>
+        <h3>Add a new property for rent:</h3>
+        <br>
 
-    <form ng-submit="rental.addRental(rental.newRental)">
-        <label for="city">Location: </label>
-        <input type="text" ng-model="rental.newRental.city" id="city" placeholder="City" />
-        <label for="sqft">Square Footage: </label>
-        <input type="number" ng-model="rental.newRental.sqft" id="sqft" placeholder="Square Footage" />
-        <label for="rent">Rent: </label>
-        <input type="number" ng-model="rental.newRental.rent" id="rent" placeholder="Annual Rent" />
-        <button class="btn btn-primary">Add Rental Property</button>
-    </form>
-    </div> <!--End Jumbotron form div-->
+        <form ng-submit="rental.addRental(rental.newRental)">
+            <label for="city">Location: </label>
+            <input type="text" ng-model="rental.newRental.city" id="city" placeholder="City" />
+            <label for="sqft">Square Footage: </label>
+            <input type="number" ng-model="rental.newRental.sqft" id="sqft" placeholder="Square Footage" />
+            <label for="rent">Rent: </label>
+            <input type="number" ng-model="rental.newRental.rent" id="rent" placeholder="Annual Rent" />
+            <button class="btn btn-primary">Add Rental Property</button>
+        </form>
+    </div>
+    <!--End Jumbotron form div-->
     <div class="row">
         <div class="col-md-12">
             <form ng-submit="rental.citySearch(rental.citySearch.value, rental.citySearch.searchKeyword)">
-            <label for="value">Search By:</label>
-            <select ng-model = "rental.citySearch.value" id="value">
-                <option value = "city">City:</option>
-                <option value = "sqft">Square Footage Greater Than or Equal To:</option>
-                <option value = "rent">Rent Less Than or Equal To:</option>
-            </select>
-            <label for="search"></label>
-            <input type="text" ng-model="rental.citySearch.searchKeyword" id="search" />
-            <button class=".btn-primary">Search for Rentals</button>
-        </form> <!--End Search Form-->
-        </div> <!-- End col-md-12 div-->
-    </div> <!-- End Search "row" div -->
+                <label for="value">Search By:</label>
+                <select ng-model="rental.citySearch.value" id="value">
+                    <option value="city">City:</option>
+                    <option value="sqft">Square Footage Greater Than or Equal To:</option>
+                    <option value="rent">Rent Less Than or Equal To:</option>
+                </select>
+                <label for="search"></label>
+                <input type="text" ng-model="rental.citySearch.searchKeyword" id="search" />
+                <button class=".btn-primary">Search for Rentals</button>
+            </form>
+            <!--End Search Form-->
+        </div>
+        <!-- End col-md-12 div-->
+    </div>
+    <!-- End Search "row" div -->
     <br>
     <br>
 
