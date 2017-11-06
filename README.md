@@ -11,6 +11,24 @@ This application is for a real estate company.  Working with existing listing an
 - [x] JavaScript
 - [x] Bootstrap
 
+## Getting Started
+
+### Prerequisites
+
+Software that is required before you attempt to start the app (e.g. node, mongo).
+
+- [Node.js](https://nodejs.org/en/)
+- [Mongo]
+- Mongoose
+
+### Installing
+
+Steps to get the development environment running.
+
+1. Download this project.
+2. `npm install`
+3. `npm start`
+
 ## To Do:
 
 - [x] Create a Full Stack application from the ground up using Angular, Node,      Express, and MongoDB
@@ -48,3 +66,7 @@ This application is for a real estate company.  Working with existing listing an
 - [x] Utilize Derek's logo
 - [x] Sweet alerts upon delete
 - [] Add design to a home page
+
+## Authors
+
+* Marta Jopp
