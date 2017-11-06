@@ -12,7 +12,7 @@ myApp.service('RentalService', function ($http) {
         }).catch(function (err) {
             console.log('Post Route error', err);
         })
-    } //end addRental function
+    } // end addRental function
 
     //refreshRentals function
     self.refreshRentals = function () {
@@ -51,28 +51,24 @@ myApp.service('RentalService', function ($http) {
     };
     // send put request with the id and then the new values which can be put in the
     // form - and saved?  I believe I would call the function with the id, and also the entire row.
-    self.update = function (rentalId, rentalToUpdate) {
+    self.updatedListing = {
+        price: '',
+        city: '',
+        sqft: ''
+    };
+   
+    
+     self.update = function (rentalId, rentalToUpdate) {
         console.log('Update Clicked');
-        swal({
-            title: 'Update Rental Property',
-            html:
-            '<label for="city">Location: </label>' +
-            '<input type="text" ng-model="rental.newRental.city" id="city" placeholder="City" />' +
-            '<label for="sqft">Square Footage: </label>' +
-            '<input type="number" ng-model="rental.newRental.sqft" id="sqft" placeholder="Square Footage" />' +
-            '<label for="rent">Rent: </label>' +
-            '<input type="number" ng-model="rental.newRental.rent" id="rent" placeholder="Annual Rent" />',
-            focusConfirm: false,
-            preConfirm: function () {
-                return new Promise(function (resolve) {
-                    resolve([
-                        // how to capture above inputs?
-                    ])
-                })
-            }
-        }).then(function (result) {
-            swal(JSON.stringify(result))
-        }).catch(swal.noop)
+        var fancyForm = document.getElementById('inputForm');
+        swal("Write something here:", {
+            content: fancyForm,
+        }).then((value) => {
+            self.updatedListing.price = document.getElementById('priceInput').value;
+            self.updatedListing.city = document.getElementById('cityInput').value;
+            self.updatedListing.sqft = document.getElementById('sqftInput').value;
+            console.log(self.updatedListing);
+        });
     }
 
     self.citySearch = function (value, keyword) {
@@ -103,3 +99,4 @@ myApp.service('RentalService', function ($http) {
         } // end if rent    
     } // end citySearch function
 });
+

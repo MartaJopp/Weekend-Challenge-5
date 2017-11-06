@@ -27,6 +27,8 @@ body {
 .nav {
     background-color: white;
     height: 100PX;
+    border-bottom: solid;
+    border-bottom-color: lightgrey;
 }
 
 .active a {

@@ -50,29 +50,27 @@ myApp.service('ListingService', function ($http) {
             )
     };
 
-    self.update = function (listingId) {
-        swal({
-            title: 'Update Listing',
-            html:
-            '<label for="city">Location: </label>' +
-            '<input type="text" ng-model="listing.newListing.city" id="city" placeholder="City" />' +
-            '<label for="sqft">Square Footage: </label>' +
-            '<input type="number" ng-model="listing.newListing.sqft" id="sqft" placeholder="Square Footage" />' +
-            '<label for="cost">Price: </label>' +
-            '<input type="number" ng-model="Listing.newListing.cost" id="cost" placeholder="Price" />',
-            focusConfirm: false,
-            preConfirm: function () {
-                return new Promise(function (resolve) {
-                    resolve([value, value, value
-                        // how to capture above inputs?
-                    ])
-                })
-            }
-        }).then(function (result) {
-            swal(JSON.stringify(result))
-        }).catch(swal.noop)
+    self.updatedListing = {
+        price: '',
+        city: '',
+        sqft: ''
+    };
 
-    } // end update function
+// Sweet alert popup to change values 
+    self.update = function (listingId, listingToUpdate) {
+        console.log('Update Clicked');
+        var fancyForm = document.getElementById('inputForm');
+        swal("Write something here:", {
+            content: fancyForm,
+        }).then((value) => {
+            self.updatedListing.price = document.getElementById('priceInput').value;
+            self.updatedListing.city = document.getElementById('cityInput').value;
+            self.updatedListing.sqft = document.getElementById('sqftInput').value;
+            console.log(self.updatedListing);
+            var updateThis = self.updatedListing
+            self.updatedInformation (listingId, updateThis);
+        });
+    } //end update
 
     self.citySearch = function (value, keyword) {
         console.log(value, keyword);
@@ -101,4 +99,10 @@ myApp.service('ListingService', function ($http) {
             })
         } // end if cost    
     } // end citySearch function
+
+// calling the PUT route with the update information
+    self.updatedInformation = function (listingId, updateThis) {
+        console.log('Update this', listingId, updateThis);
+
+    } //end self.updatedInformation function
 }); 

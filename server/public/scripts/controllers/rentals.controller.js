@@ -4,6 +4,11 @@ myApp.controller('RentalsController', function (RentalService) {
 
     var rc = this;
     rc.rentals = RentalService.rentals
+    rc.updatedListing = {
+        price: '',
+        city: '',
+        sqft: ''
+    };
 
     // addRental function
     rc.addRental = function (newRental) {
@@ -51,5 +56,6 @@ myApp.controller('RentalsController', function (RentalService) {
     rc.citySearch = function (value, keyword) {
         RentalService.citySearch(value, keyword);
     }//end search by location
+
 
 });
