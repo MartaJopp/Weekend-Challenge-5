@@ -51,26 +51,26 @@ myApp.service('ListingService', function ($http) {
     };
 
     self.update = function (listingId) {
-        swal({
-            title: 'What is your name?',
-            input: 'text',
-            inputPlaceholder: 'Enter your name or nickname',
-            showCancelButton: true,
-            inputValidator: function (value) {
-                return new Promise(function (resolve, reject) {
-                    if (value) {
-                        resolve()
-                    } else {
-                        reject('You need to write something!')
-                    }
-                })
-            }
-        }).then(function (name) {
-            swal({
-                type: 'success',
-                title: 'Hi, ' + name
-            })
-        })
+        // swal({
+        //     title: 'Update listing?',
+        //     input: 'text',
+        //     inputPlaceholder: 'Location',
+        //     showCancelButton: true,
+        //     inputValidator: function (value) {
+        //         return new Promise(function (resolve, reject) {
+        //             if (value) {
+        //                 resolve()
+        //             } else {
+        //                 reject('You need to write something!')
+        //             }
+        //         })
+        //     }
+        // }).then(function (name) {
+        //     swal({
+        //         type: 'success',
+        //         title: 'Hi, ' + name
+        //     })
+        // })
 
     } // end update function
 
