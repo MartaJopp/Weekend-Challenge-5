@@ -51,26 +51,26 @@ myApp.service('ListingService', function ($http) {
     };
 
     self.update = function (listingId) {
-        // swal({
-        //     title: 'Update listing?',
-        //     input: 'text',
-        //     inputPlaceholder: 'Location',
-        //     showCancelButton: true,
-        //     inputValidator: function (value) {
-        //         return new Promise(function (resolve, reject) {
-        //             if (value) {
-        //                 resolve()
-        //             } else {
-        //                 reject('You need to write something!')
-        //             }
-        //         })
-        //     }
-        // }).then(function (name) {
-        //     swal({
-        //         type: 'success',
-        //         title: 'Hi, ' + name
-        //     })
-        // })
+        swal({
+            title: 'Update Listing',
+            html:
+            '<label for="city">Location: </label>' +
+            '<input type="text" ng-model="listing.newListing.city" id="city" placeholder="City" />' +
+            '<label for="sqft">Square Footage: </label>' +
+            '<input type="number" ng-model="listing.newListing.sqft" id="sqft" placeholder="Square Footage" />' +
+            '<label for="cost">Price: </label>' +
+            '<input type="number" ng-model="Listing.newListing.cost" id="cost" placeholder="Price" />',
+            focusConfirm: false,
+            preConfirm: function () {
+                return new Promise(function (resolve) {
+                    resolve([value, value, value
+                        // how to capture above inputs?
+                    ])
+                })
+            }
+        }).then(function (result) {
+            swal(JSON.stringify(result))
+        }).catch(swal.noop)
 
     } // end update function
 

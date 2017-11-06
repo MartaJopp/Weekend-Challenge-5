@@ -53,22 +53,26 @@ myApp.service('RentalService', function ($http) {
     // form - and saved?  I believe I would call the function with the id, and also the entire row.
     self.update = function (rentalId, rentalToUpdate) {
         console.log('Update Clicked');
-        // swal({
-        //     title: 'Multiple inputs',
-        //     html:
-        //     '<label for="city">Location: </label>',
-        //     '<input type="text" ng-model="rental.newRental.city" id="city" placeholder="City" />'
-        //     focusConfirm: false,
-        //     preConfirm: function () {
-        //         return new Promise(function (resolve) {
-        //             resolve(
-
-        //                 )
-        //         })
-        //     }
-        // }).then(function (result) {
-        //     swal(JSON.stringify(result))
-        // }).catch(swal.noop)
+        swal({
+            title: 'Update Rental Property',
+            html:
+            '<label for="city">Location: </label>' +
+            '<input type="text" ng-model="rental.newRental.city" id="city" placeholder="City" />' +
+            '<label for="sqft">Square Footage: </label>' +
+            '<input type="number" ng-model="rental.newRental.sqft" id="sqft" placeholder="Square Footage" />' +
+            '<label for="rent">Rent: </label>' +
+            '<input type="number" ng-model="rental.newRental.rent" id="rent" placeholder="Annual Rent" />',
+            focusConfirm: false,
+            preConfirm: function () {
+                return new Promise(function (resolve) {
+                    resolve([
+                        // how to capture above inputs?
+                    ])
+                })
+            }
+        }).then(function (result) {
+            swal(JSON.stringify(result))
+        }).catch(swal.noop)
     }
 
     self.citySearch = function (value, keyword) {
