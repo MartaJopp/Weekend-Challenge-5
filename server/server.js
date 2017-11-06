@@ -18,7 +18,7 @@ app.use('/rentals', rentals);
 var mongoose = require('mongoose');
 // realestate is the name of our database
 // 27017 is the default mongo port number
-var databaseUrl = 'mongodb://localhost:27017/realestate';
+// var databaseUrl = 'mongodb://localhost:27017/realestate';
 
 var mongoURI = '';
 // process.env.MONGODB_URI will only be defined if you
@@ -31,7 +31,7 @@ if (process.env.MONGODB_URI != undefined) {
     mongoURI = 'mongodb://localhost:27017/realestate';
 }
 
-mongoose.connect(databaseUrl, {
+mongoose.connect(mongoURI, {   // changed from databaseURL to mongoURI
     useMongoClient: true
 });
 
@@ -42,7 +42,7 @@ mongoose.connection.on('connected', function () {
 mongoose.connection.on('error', function () {
     console.log('mongoose connection failed');
 });
-mongoose.connect(databaseUrl);
+mongoose.connect(mongoURI); // changed from databaseURL to mongoURI
 
 
 app.listen(port, function () {
