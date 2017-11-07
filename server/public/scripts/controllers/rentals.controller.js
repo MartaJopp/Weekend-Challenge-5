@@ -12,7 +12,18 @@ myApp.controller('RentalsController', function (RentalService) {
 
     // addRental function
     rc.addRental = function (newRental) {
-        RentalService.addRental(newRental);
+        RentalService.addRental(newRental).then (function (response) {
+            console.log('response', response);
+            rc.refreshRentals();
+            swal({
+                "title": "Added!",
+                "text": "The rental has been added!",
+                "icon": "success"
+            });
+        }).catch(function(){
+            swal('Something went wrong.');
+        });
+
         // console.log('Rental property added');
         // $http.post('/rentals', newRental).then(function (response) {
         //     console.log('Success!');

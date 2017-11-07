@@ -7,9 +7,10 @@ myApp.service('ListingService', function ($http) {
     // add Listing function
     self.addListing = function (newListing) {
         console.log('Rental property added');
-        $http.post('/listings', newListing).then(function (response) {
+        return $http.post('/listings', newListing).then(function (response) {
             console.log('Success!');
             self.refreshListings();
+            return response;
         }).catch(function (err) {
             console.log('Something went wrong', err);
         })
@@ -29,18 +30,18 @@ myApp.service('ListingService', function ($http) {
         swal({
             title: 'Delete property for sale?',
             text: "You won't be able to revert this!",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then(function () {
-            $http.delete('/listings/' + listingId).then(function (response) {
+            return $http.delete('/listings/' + listingId).then(function (response) {
                 console.log('Success!')
                 swal({
                     "title": "Deleted!",
                     "text": "The listing has been deleted!",
-                    "type": "success"
+                    "icon": "success"
                 });
                 self.refreshListings();
             }).catch(function (error) {
@@ -51,7 +52,7 @@ myApp.service('ListingService', function ($http) {
     };
 
     self.updatedListing = {
-        price: '',
+        cost: '',
         city: '',
         sqft: ''
     };
@@ -59,11 +60,12 @@ myApp.service('ListingService', function ($http) {
 // Sweet alert popup to change values 
     self.update = function (listingId, listingToUpdate) {
         console.log('Update Clicked');
+        console.log('id', listingId);
         var fancyForm = document.getElementById('inputForm');
-        swal("Write something here:", {
+        swal("Update Listing for Sale:", {
             content: fancyForm,
         }).then((value) => {
-            self.updatedListing.price = document.getElementById('priceInput').value;
+            self.updatedListing.cost = document.getElementById('priceInput').value;
             self.updatedListing.city = document.getElementById('cityInput').value;
             self.updatedListing.sqft = document.getElementById('sqftInput').value;
             console.log(self.updatedListing);
@@ -103,6 +105,12 @@ myApp.service('ListingService', function ($http) {
 // calling the PUT route with the update information
     self.updatedInformation = function (listingId, updateThis) {
         console.log('Update this', listingId, updateThis);
-
+        $http.put('/listings/' + listingId, updateThis).then(function(response){
+            swal("Update Complete", "The listing has been updated!", "success");
+            console.log(response);
+            self.refreshListings();
+        }).catch(function (error) {
+            console.log('Failure!');
+        })
     } //end self.updatedInformation function
 }); 

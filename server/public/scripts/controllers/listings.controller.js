@@ -7,7 +7,15 @@ myApp.controller('ListingsController', function (ListingService) {
 
     // add Listing function
     lc.addListing = function (newListing) {
-        ListingService.addListing(newListing);
+        ListingService.addListing(newListing).then (function (response) {
+            console.log('response', response);
+            lc.refreshListings();
+            swal({"title": "Added!",
+                "text": "The listing has been added!",
+                "icon": "success"});
+        }).catch(function () {
+            swal('Something went wrong.');
+        });
         // console.log('Rental property added');
         // $http.post('/listings', newListing).then(function (response) {
         //     console.log('Success!');
