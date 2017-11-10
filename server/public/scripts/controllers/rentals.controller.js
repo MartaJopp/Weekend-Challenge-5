@@ -4,11 +4,7 @@ myApp.controller('RentalsController', function (RentalService) {
 
     var rc = this;
     rc.rentals = RentalService.rentals
-    rc.updatedListing = {
-        price: '',
-        city: '',
-        sqft: ''
-    };
+
 
     // addRental function
     rc.addRental = function (newRental) {

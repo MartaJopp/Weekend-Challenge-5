@@ -1,6 +1,7 @@
 myApp.service('RentalService', function ($http) {
     var self = this;
 
+    self.newRental = {};
     self.rentals = { data: [] };
 
     // addRental function
@@ -60,9 +61,10 @@ myApp.service('RentalService', function ($http) {
     };
 
     // Sweet alert popup to change values 
-    self.update = function (rentalId, rentalToUpdate) {
-        console.log('id', rentalId);
-        console.log('Update Clicked');
+    self.update = function (rentalNumber, rentalToUpdate) {
+        var rentalId = rentalNumber._id;
+        console.log('rentalId', rentalId);
+        console.log('Rental Update Clicked');
         var fancyForm = document.getElementById('inputForm');
         swal("Update Property for Rent:", {
             content: fancyForm,
@@ -71,6 +73,7 @@ myApp.service('RentalService', function ($http) {
             self.updatedRental.city = document.getElementById('cityInput').value;
             self.updatedRental.sqft = document.getElementById('sqftInput').value;
             var updateThis = self.updatedRental
+            console.log('updated info', updateThis);
             self.updatedInformation(rentalId, updateThis);
         });
     } //end update
@@ -104,10 +107,11 @@ myApp.service('RentalService', function ($http) {
     } // end citySearch function
 
     // calling the PUT route with the update information
-    self.updatedInformation = function (rentalId, updateThis) {
-        console.log('Update this', rentalId, updateThis);
-        $http.put('/rentals/' + rentalId, updateThis).then(function (response) {
-            swal("Update Complete", "The rental has been updated!", "success");
+    self.updatedInformation = function (rentalNumber, rentalToUpdate) {
+        console.log('id number', rentalNumber);
+        console.log('whole thing', rentalToUpdate);
+        $http.put('/rentals/' + rentalNumber, rentalToUpdate).then(function (response) {
+            swal("Update Complete", "The listing has been updated!", "success");
             console.log(response);
             self.refreshRentals();
         }).catch(function (error) {

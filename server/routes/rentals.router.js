@@ -93,10 +93,11 @@ router.put('/:id', function (req, res) {
     console.log('id', req.params.id);
     console.log('req.body', req.body);
     var rentalToUpdate = req.body;
-    var idToUpdate = req.params.id;
-    var priceUpdate = parseInt(req.body.rent);
-    var cityUpdate = req.body.city;
+    var rentUpdate = parseInt(req.body.rent);
     var sqftUpdate = parseInt(req.body.sqft);
+    var cityUpdate = req.body.city;
+    var idToUpdate = req.params.id;
+    console.log('rentUpdate',rentUpdate);
     Rental.update({ "_id": idToUpdate }, rentalToUpdate, function (err, rentalToUpdate) {
         if (err) {
             console.log(err);
