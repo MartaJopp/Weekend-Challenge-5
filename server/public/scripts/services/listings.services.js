@@ -57,20 +57,11 @@ myApp.service('ListingService', function ($http) {
     };
 
 // Sweet alert popup to change values 
-    self.update = function (listingId, listingToUpdate) {
-        console.log('Update Clicked');
-        var fancyForm = document.getElementById('inputForm');
-        swal("Write something here:", {
-            content: fancyForm,
-        }).then((value) => {
-            self.updatedListing.price = document.getElementById('priceInput').value;
-            self.updatedListing.city = document.getElementById('cityInput').value;
-            self.updatedListing.sqft = document.getElementById('sqftInput').value;
-            console.log(self.updatedListing);
-            var updateThis = self.updatedListing
-            self.updatedInformation (listingId, updateThis);
-        });
-    } //end update
+    // self.update = function (listingId, listingToUpdate) {
+    //     console.log('Update Clicked');
+    //     var fancyForm = document.getElementById('inputForm');
+        
+    // } //end update
 
     self.citySearch = function (value, keyword) {
         console.log(value, keyword);

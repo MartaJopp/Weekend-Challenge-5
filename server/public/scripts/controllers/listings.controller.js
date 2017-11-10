@@ -4,6 +4,8 @@ myApp.controller('ListingsController', function (ListingService) {
 
     var lc = this;
     lc.listings = ListingService.listings;
+    lc.updatedListing = {};
+    lc.isEditing = false;
 
     // add Listing function
     lc.addListing = function (newListing) {
@@ -45,7 +47,20 @@ myApp.controller('ListingsController', function (ListingService) {
 
     //update listing function
     lc.update = function (listingId, listingToUpdate) {
-        ListingService.update(listingId, listingToUpdate);
+        console.log('UPDATE', listingToUpdate);
+        
+        lc.updatedListing = listingToUpdate;
+        lc.isEditing = true;
+        var fancyForm = document.getElementById('inputForm');
+        swal("Write something here:", {
+            content: fancyForm,
+        }).then((value) => {
+            console.log(lc.updatedListing);
+            var updateThis = lc.updatedListing
+            ListingService.updatedInformation(listingId, updateThis);
+            lc.isEditing = false;
+        });
+        ListingService.updatedInformation(listingId, listingToUpdate);
     }
     //Search
     lc.citySearch = function (value, keyword) {

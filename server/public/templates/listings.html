@@ -75,6 +75,11 @@
         <!--end row-->
     </div>
     <!--end container-->
-
+    <div id="inputForm" ng-show="listing.isEditing">
+        {{listing.updatedListing}}
+        <input type="text" placeholder="price" ng-model="listing.updatedListing.cost">
+        <input type="text" placeholder="city" ng-model="listing.updatedListing.city">
+        <input type="text" placeholder="sqft" ng-model="listing.updatedListing.sqft">
+    </div>
 </div>
 <!--end div-->
