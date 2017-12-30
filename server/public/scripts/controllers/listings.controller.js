@@ -4,12 +4,23 @@ myApp.controller('ListingsController', function (ListingService) {
 
     var lc = this;
     lc.listings = ListingService.listings;
-    lc.updatedListing = {};
-    lc.isEditing = false;
+    lc.edit = ListingService.edit;
+    lc.updatedListing = ListingService.updatedListing;
+
 
     // add Listing function
     lc.addListing = function (newListing) {
-        ListingService.addListing(newListing);
+        ListingService.addListing(newListing).then(function (response) {
+            console.log('response', response);
+            lc.refreshListings();
+            swal({
+                "title": "Added!",
+                "text": "The listing has been added!",
+                "icon": "success"
+            });
+        }).catch(function () {
+            swal('Something went wrong.');
+        });
         // console.log('Rental property added');
         // $http.post('/listings', newListing).then(function (response) {
         //     console.log('Success!');
@@ -46,25 +57,20 @@ myApp.controller('ListingsController', function (ListingService) {
     } // end delete listing function
 
     //update listing function
-    lc.update = function (listingId, listingToUpdate) {
-        console.log('UPDATE', listingToUpdate);
-        
-        lc.updatedListing = listingToUpdate;
-        lc.isEditing = true;
-        var fancyForm = document.getElementById('inputForm');
-        swal("Write something here:", {
-            content: fancyForm,
-        }).then((value) => {
-            console.log(lc.updatedListing);
-            var updateThis = lc.updatedListing
-            ListingService.updatedInformation(listingId, updateThis);
-            lc.isEditing = false;
-        });
-        ListingService.updatedInformation(listingId, listingToUpdate);
+    lc.update = function (listingId, listingCity, listingsqft, listingCost) {
+        ListingService.update(listingId, listingCity, listingsqft, listingCost);
     }
     //Search
     lc.citySearch = function (value, keyword) {
         ListingService.citySearch(value, keyword);
     }//end search by location
+
+    lc.cancelEdit = function () {
+        lc.edit.editing = false;
+    }
+
+    lc.updatedInformation = function (id, city, sqft, cost) {
+        ListingService.updatedInformation(id, city, sqft, cost)
+    }
 
 });

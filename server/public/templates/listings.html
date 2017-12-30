@@ -22,6 +22,22 @@
         </form>
     </div>
     <!--End jumbotron form div-->
+    <!--Update Listing-->
+    <div class="jumbotron view" ng-show="listing.edit.editing">
+        <h3>Update Property</h3>
+        <br>
+        <label for="city">Update Location: </label>
+        <input type="text" ng-model="listing.updatedListing.city" id="city" placeholder="{{listing.updatedListing.city}}" />
+        <label for="sqft">Update Square Footage: </label>
+        <input type="number" ng-model="listing.updatedListing.sqft" id="sqft" placeholder="{{listing.updatedListing.sqft}}" />
+        <br>
+        <label for="rent">Update Cost: </label>
+        <input type="number" ng-model="listing.updatedListing.cost" id="rent" placeholder="{{listing.updatedListing.rent}}" />
+        <br>
+        <button class="btn btn-success" ng-click="listing.updatedInformation(listing.updatedListing.id, listing.updatedListing.city, listing.updatedListing.sqft, listing.updatedListing.cost)">Update Listing</button>
+        <button class="btn btn-warning" ng-click="listing.cancelEdit()">Cancel</button>
+    </div>
+    <!--End Update Information-->
     <div class="row">
         <div class="col-md-12">
             <form ng-submit="listing.citySearch(listing.citySearch.value, listing.citySearch.searchKeyword)">
@@ -64,13 +80,13 @@
                             Delete</button>
                     </td>
                     <td>
-                        <button ng-click="listing.update(house._id, house)" class="btn btn-success">Update</button>
+                        <button ng-click="listing.update(house._id, house.city, house.sqft, house.cost)" class="btn btn-success">Update</button>
                     </td>
                 </tr>
                 <!--end ng repeat-->
             </table>
             <!--end Hover table-->
-            
+
         </div>
         <!--end row-->
     </div>

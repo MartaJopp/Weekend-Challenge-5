@@ -3,13 +3,16 @@ myApp.service('ListingService', function ($http) {
 
     self.newListing = {};
     self.listings = { data: [] };
-
+    self.edit = {
+        editing: false
+    }
     // add Listing function
     self.addListing = function (newListing) {
         console.log('Rental property added');
-        $http.post('/listings', newListing).then(function (response) {
+        return $http.post('/listings', newListing).then(function (response) {
             console.log('Success!');
             self.refreshListings();
+            return response;
         }).catch(function (err) {
             console.log('Something went wrong', err);
         })
@@ -29,18 +32,18 @@ myApp.service('ListingService', function ($http) {
         swal({
             title: 'Delete property for sale?',
             text: "You won't be able to revert this!",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, delete it!'
         }).then(function () {
-            $http.delete('/listings/' + listingId).then(function (response) {
+            return $http.delete('/listings/' + listingId).then(function (response) {
                 console.log('Success!')
                 swal({
                     "title": "Deleted!",
                     "text": "The listing has been deleted!",
-                    "type": "success"
+                    "icon": "success"
                 });
                 self.refreshListings();
             }).catch(function (error) {
@@ -51,17 +54,21 @@ myApp.service('ListingService', function ($http) {
     };
 
     self.updatedListing = {
-        price: '',
+        cost: '',
         city: '',
-        sqft: ''
+        sqft: '',
+        id: ''
     };
 
-// Sweet alert popup to change values 
-    // self.update = function (listingId, listingToUpdate) {
-    //     console.log('Update Clicked');
-    //     var fancyForm = document.getElementById('inputForm');
-        
-    // } //end update
+    // update information
+    self.update = function (id, city, sqft, cost) {
+        console.log('number', id)
+        self.updatedListing.id = id;
+        self.updatedListing.city = city;
+        self.updatedListing.cost = cost;
+        self.updatedListing.sqft = sqft
+        self.edit.editing = !self.edit.editing
+    } //end update
 
     self.citySearch = function (value, keyword) {
         console.log(value, keyword);
@@ -91,9 +98,20 @@ myApp.service('ListingService', function ($http) {
         } // end if cost    
     } // end citySearch function
 
-// calling the PUT route with the update information
-    self.updatedInformation = function (listingId, updateThis) {
-        console.log('Update this', listingId, updateThis);
-
+    // calling the PUT route with the update information
+    self.updatedInformation = function (id, city, sqft, cost) {
+        self.updatedListing.city = city;
+        self.updatedListing.sqft = sqft;
+        self.updatedListing.cost = cost;
+        self.updatedListing.id = id;
+        console.log(self.updatedListing.id)
+        $http.put('/listings/' + self.updatedListing.id, self.updatedListing).then(function (response) {
+            swal("Update Complete", "The listing has been updated!", "success");
+            console.log(response);
+            self.edit.editing = false;
+            self.refreshListings();
+        }).catch(function (error) {
+            console.log('Failure!');
+        })
     } //end self.updatedInformation function
 }); 

@@ -1,14 +1,19 @@
 myApp.service('RentalService', function ($http) {
     var self = this;
 
+    self.newRental = {};
     self.rentals = { data: [] };
+    self.edit = {
+        editing: false
+    }
 
     // addRental function
     self.addRental = function (newRental) {
         console.log('Rental property added');
-        $http.post('/rentals', newRental).then(function (response) {
+        return $http.post('/rentals', newRental).then(function (response) {
             console.log('Success!');
             self.refreshRentals();
+            return response;
         }).catch(function (err) {
             console.log('Post Route error', err);
         })
@@ -26,10 +31,11 @@ myApp.service('RentalService', function ($http) {
 
     // delete rental function
     self.delete = function (rentalId) {
+        console.log('rentalId', rentalId);
         swal({
             title: 'Delete rental property?',
             text: "You won't be able to revert this!",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
@@ -40,7 +46,7 @@ myApp.service('RentalService', function ($http) {
                 swal({
                     "title": "Deleted!",
                     "text": "The rental property has been deleted!",
-                    "type": "success"
+                    "icon": "success"
                 });
                 self.refreshRentals();
             }).catch(function (error) {
@@ -51,25 +57,25 @@ myApp.service('RentalService', function ($http) {
     };
     // send put request with the id and then the new values which can be put in the
     // form - and saved?  I believe I would call the function with the id, and also the entire row.
-    self.updatedListing = {
-        price: '',
+    self.updatedRental = {
+        rent: '',
         city: '',
-        sqft: ''
+        sqft: '',
+        id: '',
     };
-   
-    
-     self.update = function (rentalId, rentalToUpdate) {
-        console.log('Update Clicked');
-        var fancyForm = document.getElementById('inputForm');
-        swal("Write something here:", {
-            content: fancyForm,
-        }).then((value) => {
-            self.updatedListing.price = document.getElementById('priceInput').value;
-            self.updatedListing.city = document.getElementById('cityInput').value;
-            self.updatedListing.sqft = document.getElementById('sqftInput').value;
-            console.log(self.updatedListing);
-        });
-    }
+
+
+
+    // Sweet alert popup to change values 
+    self.update = function (id, rentalCity, rentalsqft, rentalrent) {
+        console.log('number', id)
+        self.updatedRental.id = id;
+        self.updatedRental.city = rentalCity;
+        self.updatedRental.rent = rentalrent;
+        self.updatedRental.sqft = rentalsqft
+        self.edit.editing = !self.edit.editing
+
+    } //end update
 
     self.citySearch = function (value, keyword) {
         console.log(value, keyword);
@@ -98,5 +104,23 @@ myApp.service('RentalService', function ($http) {
             })
         } // end if rent    
     } // end citySearch function
+
+    // calling the PUT route with the update information
+    self.updatedInformation = function (id, city, sqft, rent) {
+        self.updatedRental.city = city;
+        self.updatedRental.sqft = sqft;
+        self.updatedRental.rent = rent;
+        self.updatedRental.id = id;
+        $http.put('/rentals/' + self.updatedRental.id, self.updatedRental).then(function (response) {
+            swal("Update Complete", "The listing has been updated!", "success");
+            console.log(response);
+            self.edit.editing = false;
+            self.refreshRentals();
+        }).catch(function (error) {
+            console.log('Failure!');
+        })
+    } //end self.updatedInformation function
+
+
 });
 

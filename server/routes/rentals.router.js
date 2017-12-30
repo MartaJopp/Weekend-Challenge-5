@@ -88,5 +88,26 @@ router.get('/searchRent/:keyword', function (req, res) {
     });
 })//end search by Rent Footage GET route
 
+router.put('/:id', function (req, res) {
+    console.log(req.params);
+    console.log('id', req.params.id);
+    console.log('req.body', req.body);
+    var rentalToUpdate = req.body;
+    var rentUpdate = parseInt(req.body.rent);
+    var sqftUpdate = parseInt(req.body.sqft);
+    var cityUpdate = req.body.city;
+    var idToUpdate = req.params.id;
+    console.log('rentUpdate',rentUpdate);
+    Rental.update({ "_id": idToUpdate }, rentalToUpdate, function (err, rentalToUpdate) {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(201);
+
+        }
+    });
+}); // END PUT ROUTE
+
 // Make router available to other files
 module.exports = router;

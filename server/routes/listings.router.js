@@ -12,6 +12,7 @@ var Listing = mongoose.model('Listing', ListingSchema, 'listings');
 router.post('/', function (req, res) {
     console.log(req.body); //rental property received in addRental function
     var listingToAdd = new Listing(req.body); //renaming to work with mongoose
+    console.log(listingToAdd);
     listingToAdd.save(function (err, data) {
         if (err) {
             console.log(err);
@@ -88,6 +89,27 @@ router.get('/searchPrice/:keyword', function (req, res) {
         }
     });
 })//end search by Price GET route
+
+router.put('/:id', function (req, res){
+    console.log('id', req.params.id);
+    console.log('req.body', req.body);
+    var listingToUpdate = req.body;
+    var idToUpdate = req.params.id;
+    var priceUpdate = parseInt(req.body.cost);
+    var cityUpdate = req.body.city;
+    var sqftUpdate = parseInt(req.body.sqft);
+    console.log('priceUpdate', priceUpdate);
+    Listing.update({ "_id": idToUpdate }, listingToUpdate, function (err, listingToUpdate){
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(201);
+
+        }
+    });
+}); // END PUT ROUTE
+
 
 // Make router available to other files
 module.exports = router;
