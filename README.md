@@ -1,4 +1,4 @@
-# Weekend-Challenge-5
+# Real Estate Application
 
 This application is for a real estate company.  Working with existing listing and rental data - users may find homes for sale or rent.  
 
@@ -57,9 +57,9 @@ Steps to get the development environment running.
 
 ## Stretch Goals-Pro Mode:
 
-- [] Ability to update an existing record using a pop up (modal).
+- [x] Ability to update an existing record.
 - [x] Display the least expensive property featured at the top of the page.
-- [x] Ability to search or filter by various parameters (try doing this in         Mongo instead of Angular)
+- [x] Ability to search or filter by various parameters (try doing this in Mongo instead of Angular)
 
 ## Individual Stretch Goals: 
 

@@ -3,7 +3,9 @@ myApp.service('ListingService', function ($http) {
 
     self.newListing = {};
     self.listings = { data: [] };
-
+    self.edit = {
+        editing: false
+    }
     // add Listing function
     self.addListing = function (newListing) {
         console.log('Rental property added');
@@ -54,24 +56,18 @@ myApp.service('ListingService', function ($http) {
     self.updatedListing = {
         cost: '',
         city: '',
-        sqft: ''
+        sqft: '',
+        id: ''
     };
 
-// Sweet alert popup to change values 
-    self.update = function (listingId, listingToUpdate) {
-        console.log('Update Clicked');
-        console.log('id', listingId);
-        var fancyForm = document.getElementById('inputForm');
-        swal("Update Listing for Sale:", {
-            content: fancyForm,
-        }).then((value) => {
-            self.updatedListing.cost = document.getElementById('priceInput').value;
-            self.updatedListing.city = document.getElementById('cityInput').value;
-            self.updatedListing.sqft = document.getElementById('sqftInput').value;
-            console.log(self.updatedListing);
-            var updateThis = self.updatedListing
-            self.updatedInformation (listingId, updateThis);
-        });
+    // update information
+    self.update = function (id, city, sqft, cost) {
+        console.log('number', id)
+        self.updatedListing.id = id;
+        self.updatedListing.city = city;
+        self.updatedListing.cost = cost;
+        self.updatedListing.sqft = sqft
+        self.edit.editing = !self.edit.editing
     } //end update
 
     self.citySearch = function (value, keyword) {
@@ -102,12 +98,17 @@ myApp.service('ListingService', function ($http) {
         } // end if cost    
     } // end citySearch function
 
-// calling the PUT route with the update information
-    self.updatedInformation = function (listingId, updateThis) {
-        console.log('Update this', listingId, updateThis);
-        $http.put('/listings/' + listingId, updateThis).then(function(response){
+    // calling the PUT route with the update information
+    self.updatedInformation = function (id, city, sqft, cost) {
+        self.updatedListing.city = city;
+        self.updatedListing.sqft = sqft;
+        self.updatedListing.cost = cost;
+        self.updatedListing.id = id;
+        console.log(self.updatedListing.id)
+        $http.put('/listings/' + self.updatedListing.id, self.updatedListing).then(function (response) {
             swal("Update Complete", "The listing has been updated!", "success");
             console.log(response);
+            self.edit.editing = false;
             self.refreshListings();
         }).catch(function (error) {
             console.log('Failure!');

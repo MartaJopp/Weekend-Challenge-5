@@ -3,6 +3,9 @@ myApp.service('RentalService', function ($http) {
 
     self.newRental = {};
     self.rentals = { data: [] };
+    self.edit = {
+        editing: false
+    }
 
     // addRental function
     self.addRental = function (newRental) {
@@ -57,25 +60,21 @@ myApp.service('RentalService', function ($http) {
     self.updatedRental = {
         rent: '',
         city: '',
-        sqft: ''
+        sqft: '',
+        id: '',
     };
 
+
+
     // Sweet alert popup to change values 
-    self.update = function (rentalNumber, rentalToUpdate) {
-        var rentalId = rentalNumber._id;
-        console.log('rentalId', rentalId);
-        console.log('Rental Update Clicked');
-        var fancyForm = document.getElementById('inputForm');
-        swal("Update Property for Rent:", {
-            content: fancyForm,
-        }).then((value) => {
-            self.updatedRental.rent = document.getElementById('priceInput').value;
-            self.updatedRental.city = document.getElementById('cityInput').value;
-            self.updatedRental.sqft = document.getElementById('sqftInput').value;
-            var updateThis = self.updatedRental
-            console.log('updated info', updateThis);
-            self.updatedInformation(rentalId, updateThis);
-        });
+    self.update = function (id, rentalCity, rentalsqft, rentalrent) {
+        console.log('number', id)
+        self.updatedRental.id = id;
+        self.updatedRental.city = rentalCity;
+        self.updatedRental.rent = rentalrent;
+        self.updatedRental.sqft = rentalsqft
+        self.edit.editing = !self.edit.editing
+
     } //end update
 
     self.citySearch = function (value, keyword) {
@@ -107,16 +106,21 @@ myApp.service('RentalService', function ($http) {
     } // end citySearch function
 
     // calling the PUT route with the update information
-    self.updatedInformation = function (rentalNumber, rentalToUpdate) {
-        console.log('id number', rentalNumber);
-        console.log('whole thing', rentalToUpdate);
-        $http.put('/rentals/' + rentalNumber, rentalToUpdate).then(function (response) {
+    self.updatedInformation = function (id, city, sqft, rent) {
+        self.updatedRental.city = city;
+        self.updatedRental.sqft = sqft;
+        self.updatedRental.rent = rent;
+        self.updatedRental.id = id;
+        $http.put('/rentals/' + self.updatedRental.id, self.updatedRental).then(function (response) {
             swal("Update Complete", "The listing has been updated!", "success");
             console.log(response);
+            self.edit.editing = false;
             self.refreshRentals();
         }).catch(function (error) {
             console.log('Failure!');
         })
     } //end self.updatedInformation function
+
+
 });
 

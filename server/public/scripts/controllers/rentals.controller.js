@@ -3,12 +3,13 @@ myApp.controller('RentalsController', function (RentalService) {
     console.log('RentalsController created.');
 
     var rc = this;
-    rc.rentals = RentalService.rentals
-
+    rc.rentals = RentalService.rentals;
+    rc.edit = RentalService.edit;
+    rc.updatedRental = RentalService.updatedRental;
 
     // addRental function
     rc.addRental = function (newRental) {
-        RentalService.addRental(newRental).then (function (response) {
+        RentalService.addRental(newRental).then(function (response) {
             console.log('response', response);
             rc.refreshRentals();
             swal({
@@ -16,7 +17,7 @@ myApp.controller('RentalsController', function (RentalService) {
                 "text": "The rental has been added!",
                 "icon": "success"
             });
-        }).catch(function(){
+        }).catch(function () {
             swal('Something went wrong.');
         });
 
@@ -55,8 +56,9 @@ myApp.controller('RentalsController', function (RentalService) {
     } // end rental delete
 
     // rental update function
-    rc.update = function (rentalId, rentalToUpdate) {
-        RentalService.update((rentalId, rentalToUpdate))
+    rc.update = function (rentalId, rentalCity, rentalsqft, rentalrent) {
+
+        RentalService.update(rentalId, rentalCity, rentalsqft, rentalrent)
     }
 
     //search by location
@@ -64,5 +66,11 @@ myApp.controller('RentalsController', function (RentalService) {
         RentalService.citySearch(value, keyword);
     }//end search by location
 
+    rc.cancelEdit = function () {
+        rc.edit.editing = false;
+    }
 
+    rc.updatedInformation = function (id, city, sqft, rent) {
+        RentalService.updatedInformation(id, city, sqft, rent)
+    }
 });
