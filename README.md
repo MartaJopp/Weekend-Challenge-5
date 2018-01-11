@@ -1,6 +1,6 @@
 # Real Estate Application
 
-This application is for a real estate company.  Working with existing listing and rental data - users may find homes for sale or rent.  
+This application is for a real estate company.  Users may add, edit, delete and search listings for sale or rent. 
 
 ## Technologies 
 
@@ -9,17 +9,17 @@ This application is for a real estate company.  Working with existing listing an
 - [x] MongoDB
 - [x] Node
 - [x] JavaScript
-- [x] Bootstrap
+- [x] Bootstrap for styling
 
 ## Getting Started
 
 ### Prerequisites
 
-Software that is required before you attempt to start the app (e.g. node, mongo).
+Software that is required before you attempt to start the app.
 
 - [Node.js](https://nodejs.org/en/)
-- [Mongo]
-- Mongoose
+- [Mongo](https://www.mongodb.com/download-center?jmp=tutorials&_ga=2.157987642.1691954874.1515639811-1798030591.1515639811#enterprise)
+- Start Mongo and make sure it is up and running.
 
 ### Installing
 
